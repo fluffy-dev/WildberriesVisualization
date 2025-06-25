@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аналитика товаров Wildberries</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Сервис аналитики товаров</h1>
+        </header>
+
+        <aside class="filters-sidebar">
+            <h2>Фильтры</h2>
+            <div class="filter-group">
+                <label>Цена</label>
+                <div id="price-slider"></div>
+                <div class="slider-values">
+                    <span id="price-lower-value">0</span> - <span id="price-upper-value">200000</span>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label for="min-rating">Минимальный рейтинг</label>
+                <input type="number" id="min-rating" min="0" max="5" step="0.1" placeholder="например, 4.5">
+            </div>
+            <div class="filter-group">
+                <label for="min-reviews">Минимальное кол-во отзывов</label>
+                <input type="number" id="min-reviews" min="0" step="10" placeholder="например, 100">
+            </div>
+
+            <h2>Сортировка</h2>
+            <div class="filter-group">
+                <select id="ordering">
+                    <option value="-created_at">По умолчанию</option>
+                    <option value="name">Название (А-Я)</option>
+                    <option value="-name">Название (Я-А)</option>
+                    <option value="discounted_price">Цена (возр.)</option>
+                    <option value="-discounted_price">Цена (убыв.)</option>
+                    <option value="-rating">Рейтинг (убыв.)</option>
+                    <option value="rating">Рейтинг (возр.)</option>
+                    <option value="-reviews_count">Отзывы (убыв.)</option>
+                    <option value="reviews_count">Отзывы (возр.)</option>
+                </select>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div id="loader" class="loader">Загрузка...</div>
+            <div id="products-table-container">
+                <table id="products-table">
+                    <thead>
+                        <tr>
+                            <th>Название товара</th>
+                            <th>Цена</th>
+                            <th>Цена со скидкой</th>
+                            <th>Рейтинг</th>
+                            <th>Кол-во отзывов</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Данные будут вставлены здесь -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <h3>Распределение цен</h3>
+                    <canvas id="price-histogram"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <h3>Скидка vs Рейтинг</h3>
+                    <canvas id="discount-vs-rating-chart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
