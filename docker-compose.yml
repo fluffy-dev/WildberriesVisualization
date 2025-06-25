@@ -28,7 +28,7 @@ services:
 
   worker:
     build: .
-    command: celery -A core worker -l info
+    command: celery -A src.core worker -l info
     volumes:
       - .:/app
     env_file:
